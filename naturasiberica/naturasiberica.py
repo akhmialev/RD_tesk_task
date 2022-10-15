@@ -47,7 +47,7 @@ def create_json(data):
         if d['schedule'] == False:
             data_magazine['working_hours'] = '-'
         else:
-            data_magazine['working_hours'] = d['schedule']
+            data_magazine['working_hours'] = [d['schedule']]
 
 
         all_data.append(data_magazine)

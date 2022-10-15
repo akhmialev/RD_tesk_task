@@ -6,12 +6,11 @@ from bs4 import BeautifulSoup
 ua = UserAgent()
 URL = 'https://oriencoop.cl/sucursales.htm'
 headers = {'User-Agent': ua.random}
-r = requests.get(URL, headers=headers)
 
+r = requests.get(URL, headers=headers)
 soup = BeautifulSoup(r.text, 'html.parser')
 
 link = []
-
 table = soup.find('div', class_='c-left')
 magazine = table.find('ul', class_='c-list c-accordion').find_all('li')
 for m in magazine:
@@ -26,9 +25,9 @@ count = 0
 for l in link:
     data = {}
     url = 'https://oriencoop.cl' + l
-    # print(url)
     r = requests.get(url)
     soup = BeautifulSoup(r.text, 'html.parser')
+
     adress = soup.find('div', class_='s-dato').find('span').text
     name = soup.find('div', class_='s-dato').find('h3').text
     phone = soup.find('div', class_='s-dato').find_all('span')[1].text
@@ -38,11 +37,13 @@ for l in link:
     location = location.split('!')[5:7]
     location = location[0].replace('2d', ''), location[1].replace('3d', '')
     location = list(location)
+
     data['adress'] = adress
     data['lation'] = location
     data['name'] = name
-    data['phones'] = phone
+    data['phones'] = [phone]
     data['working_hours'] = [working_hours_manana, working_hours_tarde]
+
     datas.append(data)
     count += 1
     print(f'{count}- локация')
