@@ -49,8 +49,19 @@ def create_json(data):
         else:
             data_magazine['working_hours'] = [d['schedule']]
 
-
         all_data.append(data_magazine)
+
+    for d in data['usual']:
+        for cities in d['cities']:
+            for mag in cities['shops']:
+                data_magazine = {}
+
+                data_magazine['address'] = mag['address']
+                data_magazine['lation'] = [mag['location']]
+                data_magazine['name'] = mag['name']
+                data_magazine['phones'] = [mag['phone']]
+
+                all_data.append(data_magazine)
     return all_data
 
 
@@ -63,8 +74,3 @@ def save_data_json(data):
         except Exception as e:
             print(f'Ошибка {e}')
 save_data_json(create_json(data))
-
-
-
-
-
