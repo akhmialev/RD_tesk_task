@@ -56,7 +56,7 @@ def create_json(data):
                 data_magazine = {}
 
                 data_magazine['address'] = mag['address']
-                data_magazine['lation'] = [float(mag['location']['lag']), float(mag['location']['lng'])]
+                data_magazine['lation'] = [float(mag['location']['lat']), float(mag['location']['lng'])]
                 data_magazine['name'] = mag['name']
                 data_magazine['phones'] = [mag['phone']]
 
