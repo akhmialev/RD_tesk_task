@@ -45,7 +45,7 @@ for l in LINKS:
     location = re.findall(r"\['(\d+\.\d+)','(\d+\.\d+)']", str(soup))
 
     all_data['address'] = data[0]
-    all_data['lation'] = location
+    all_data['lation'] = [float(location[0][0]), float(location[0][1])]
     all_data['name'] = name
     all_data['phones'] = [data[1]]
     all_data['working_hours'] = [data[2]]

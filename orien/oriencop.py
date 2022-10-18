@@ -39,7 +39,7 @@ for l in link:
     location = list(location)
 
     data['adress'] = adress
-    data['lation'] = location
+    data['lation'] = [float(location[0]), float(location[1])]
     data['name'] = name
     data['phones'] = [phone]
     data['working_hours'] = [working_hours_manana, working_hours_tarde]

@@ -33,7 +33,6 @@ web_json = fetch("https://naturasiberica.ru/local/php_interface/ajax/getShopsDat
 
 data = web_json.json()
 
-
 def create_json(data):
     all_data = []
     for d in data['original']:
@@ -57,7 +56,7 @@ def create_json(data):
                 data_magazine = {}
 
                 data_magazine['address'] = mag['address']
-                data_magazine['lation'] = [mag['location']]
+                data_magazine['lation'] = [float(mag['location']['lag']), float(mag['location']['lng'])]
                 data_magazine['name'] = mag['name']
                 data_magazine['phones'] = [mag['phone']]
 
